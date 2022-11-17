@@ -454,7 +454,7 @@ const Player1UI = (props: { accountAddress: string }) => {
                 <span className={"text-4xl"}>Player 2 has joined.</span>
                 <br />
                 <span className={"text-4xl"}>
-                  How much ETH do you want to bet? Bet{" "}
+                  How much SGB do you want to bet? Bet{" "}
                   <span
                     id="stakeInput"
                     contentEditable

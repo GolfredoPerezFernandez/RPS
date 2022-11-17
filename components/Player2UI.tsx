@@ -304,7 +304,7 @@ const Player2UI = ({
                 <br />
                 <span className={"text-4xl"}>
                   Please choose a weapon, if you decide to play you&apos;ll be
-                  staking {stake} ETH.
+                  staking {stake} SGB.
                 </span>
               </>
             )}
