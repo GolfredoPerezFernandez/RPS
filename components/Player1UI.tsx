@@ -11,7 +11,7 @@ import { copyPasteIcon, externalIcon } from "../utils/svgIcons";
 import { nanoid } from "nanoid";
 import { useInterval } from "../utils/useInterval";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "https://rps-rho.vercel.app/";
 
 type PeerMsg =
   | { _type: "ContractAddress"; address: string }
