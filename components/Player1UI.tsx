@@ -10,8 +10,9 @@ import NonInteractableWeapon from "./NonInteractableWeapon";
 import { copyPasteIcon, externalIcon } from "../utils/svgIcons";
 import { nanoid } from "nanoid";
 import { useInterval } from "../utils/useInterval";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "https://rps-rho.vercel.app/";
+import { Router } from "next/dist/client/router";
+//"https://rps-rho.vercel.app/"
+const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000/";
 
 type PeerMsg =
   | { _type: "ContractAddress"; address: string }
@@ -55,9 +56,12 @@ type BlockchainInfo = {
   p2Moved: boolean;
   p2BlockchainMove: number;
 };
+import { useRouter } from 'next/router'
 
 const Player1UI = (props: { accountAddress: string }) => {
-  const INITIAL_STAKE = "0.001";
+  const INITIAL_STAKE = "0.001"; 
+   const router = useRouter()
+
   const [salt, setSalt] = useState<Uint8Array | null>();
   const [peerId, setPeerId] = useState<string>("");
   const [connState, setConnState] = useState<Peer.DataConnection>();
@@ -270,6 +274,9 @@ const Player1UI = (props: { accountAddress: string }) => {
       return "no one, a draw";
     } else if (win(weapon, player2Response)) return "P1";
     else return "P2";
+  };
+
+  const playAgain = async () => {router.push("/")
   };
 
   const player2Timedout = async () => {
@@ -624,6 +631,20 @@ const Player1UI = (props: { accountAddress: string }) => {
                     : winner === "P2"
                     ? "You lost, better luck next time and thanks for playing!"
                     : "No one won. Get those spirits up, thanks for playing!"}
+                    <br />
+                     <button
+                className={"px-2 py-1 rounded-md"}
+                style={{
+                  color: "#FFFA83",
+                  backgroundColor: "#FF005C",
+                  width: "fit-content",
+                }}
+                onClick={async () => {
+                  await playAgain();
+                }}
+              >
+                Play Again
+              </button>
                 </span>
               </>
             )}

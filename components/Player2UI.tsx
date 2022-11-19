@@ -8,6 +8,7 @@ import WeaponSelector from "./WeaponSelector";
 import { externalIcon } from "../utils/svgIcons";
 import NonInteractableWeapon from "./NonInteractableWeapon";
 import { useInterval } from "../utils/useInterval";
+import { useRouter } from 'next/router'
 
 type Loading = {
   status: "loading" | "idle";
@@ -163,7 +164,10 @@ const Player2UI = ({
       console.log("Ethereum object doesn't exist!");
     }
   };
+  const router = useRouter()
 
+  const playAgain = async () => {router.push("/")
+  };
   const player1Timedout = async () => {
     setScreenToDisplay("PlayerTimedout");
     //@ts-ignore
@@ -294,6 +298,9 @@ const Player2UI = ({
               <>
                 <span className={"text-4xl"}>Linked with Player 1!</span>
                 <br />
+                <span className={"text-2xl"}>
+                Scissors cuts paper. Paper covers rock. Rock crushes lizard. Lizard poisons Spock. Spock smashes scissors. Scissors decapitates lizard. Lizard eats paper. Paper disproves Spock. Spock vaporizes rock. Rock crushes scissors.
+                </span>    <br />
                 <span className={"text-4xl"}>
                   Waiting for the match to start.
                 </span>
@@ -420,7 +427,22 @@ const Player2UI = ({
                     : winner === "P1"
                     ? "You lost, better luck next time and thanks for playing!"
                     : "No one won. Get those spirits up, thanks for playing!"}
-                </span>
+                </span>  
+                <br />
+                 <button
+                className={"px-2 py-1 rounded-md"}
+                style={{
+                  color: "#FFFA83",
+
+                  backgroundColor: "#FF005C",
+                  width: "fit-content",
+                }}
+                onClick={async () => {
+                  await playAgain();
+                }}
+              >
+                Play Again
+              </button>
               </>
             ) : (
               ""

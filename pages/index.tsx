@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Player1UI from "../components/Player1UI";
 import Player2UI from "../components/Player2UI";
+import { useMoralis } from "react-moralis";
 
 type Loading = {
   status: boolean;
@@ -46,6 +47,7 @@ export default function Home() {
       return window.alert("Please install Metamask to get the full experience");
     }
   };
+  const { Moralis, authenticate, enableWeb3, isWeb3EnableLoading, isWeb3Enabled, logout, user } = useMoralis();
 
   const connectWallet = async () => {
     setLoading({ ...loading, status: true, msg: "Connecting your wallet..." });
@@ -58,11 +60,25 @@ export default function Home() {
         return;
       }
 
-      const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
-      });
+      await enableWeb3();
+      const chainId = Moralis.getChainId();
 
-      setCurrentAccount(accounts[0]);
+      const chainId2 = 19;
+      const chainName = 'Songbird';
+      const currencyName = 'SGB';
+      const currencySymbol = 'SGB';
+      const rpcUrl = 'https://sgb.ftso.com.au/ext/bc/C/rpc';
+      const blockExplorerUrl = 'https://songbird-explorer.flare.network/';
+      if ( chainId === '0x13') {
+    
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+  
+        setCurrentAccount(accounts[0]);
+      } else {
+        await Moralis.addNetwork(chainId2, chainName, currencyName, currencySymbol, rpcUrl, blockExplorerUrl);
+      }
 
       loading.reset();
     } catch (error) {
@@ -123,6 +139,14 @@ export default function Home() {
               color: "#FFFA83",
             }}
           >
+          <img
+      src={'https://bafkreiad3ksqpxasuooqbtq4f6mbzotub6ybxpm25y6nl2t5uf44btvx4y.ipfs.nftstorage.link/'}
+      style={{
+          width:"200px",
+          height:"200px",
+          alignSelf: "center",
+        }}
+      />
             <span>Rock</span>
             <span>Paper</span>
             <span>Scissors</span>
