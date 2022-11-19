@@ -12,7 +12,7 @@ import { nanoid } from "nanoid";
 import { useInterval } from "../utils/useInterval";
 import { Router } from "next/dist/client/router";
 //"https://rps-rho.vercel.app/"
-const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "http://localhost:3000/";
+const BASE_URL = process.env.NEXT_PUBLIC_BASEURL || "https://rps-rho.vercel.app/";
 
 type PeerMsg =
   | { _type: "ContractAddress"; address: string }
@@ -308,7 +308,7 @@ const Player1UI = (props: { accountAddress: string }) => {
     console.log("Trying to reach PeerJS servers");
     const asyncFn = async () => {
       console.log("Trying to create Peer");
-      const id = `advancedRPS-${nanoid()}`;
+      const id = `cootiesMiniGame-${nanoid()}`;
       const peer = await initPeer(id);
 
       // Save own peer id
