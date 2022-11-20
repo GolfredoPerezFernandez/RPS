@@ -301,6 +301,11 @@ const Player2UI = ({
                 <span className={"text-2xl"}>
                 Scissors cuts paper. Paper covers rock. Rock crushes lizard. Lizard poisons Spock. Spock smashes scissors. Scissors decapitates lizard. Lizard eats paper. Paper disproves Spock. Spock vaporizes rock. Rock crushes scissors.
                 </span>    <br />
+                
+                <span className={"text-2xl"}>
+                 5% fees goes straight back to buying coot and raising value.
+                </span>  
+                 <br />
                 <span className={"text-4xl"}>
                   Waiting for the match to start.
                 </span>

@@ -109,7 +109,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: "#11052C" }} className="flex flex-grow">
       <Head>
-        <title>Advanced RPS</title>
+        <title>COOTIES RPS</title>
         <meta
           name="description"
           content="A site where friendships are ruined"
@@ -152,13 +152,17 @@ export default function Home() {
             <span>Scissors</span>
             <span>Lizard</span>
             <span>Spock</span>
+           
+            <span className={"text-4xl"}>
+              5% fees goes of straight back to liquidity pools.
+                </span>
           </div>
         </div>
         <div
           id="rightDisplay"
           style={{ backgroundColor: "#3D087B", fontFamily: "Righteous" }}
-          className="flex-1 flex flex-col h-full w-full"
-        >
+          className="flex-1 flex flex-col h-full w-full">
+       
           {loading.status === true ? (
             <div
               className={
@@ -169,6 +173,8 @@ export default function Home() {
                 color: "#FFFA83",
               }}
             >
+              
+            
               {/* This div displays status info */}
               <div
                 className={"flex-1 flex flex-col w-full  max-w-lg"}
@@ -178,6 +184,8 @@ export default function Home() {
                   Now connecting to your wallet.
                 </span>
                 <br />
+                
+
                 <span className={"text-4xl"}>
                   Please check to confirm connection.
                 </span>
