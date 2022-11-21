@@ -153,16 +153,14 @@ export default function Home() {
             <span>Lizard</span>
             <span>Spock</span>
            
-            <span className={"text-4xl"}>
-              5% fees goes of straight back to liquidity pools.
-                </span>
+         
           </div>
         </div>
         <div
           id="rightDisplay"
           style={{ backgroundColor: "#3D087B", fontFamily: "Righteous" }}
           className="flex-1 flex flex-col h-full w-full">
-       
+         
           {loading.status === true ? (
             <div
               className={
